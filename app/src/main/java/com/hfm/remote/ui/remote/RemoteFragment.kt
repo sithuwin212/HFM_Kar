@@ -68,6 +68,6 @@ class RemoteFragment : Fragment() {
 }
 
 // Fix for SeekBar listener naming
-fun SeekBar.setOnSeekBarChangeChangeListener(l: SeekBar.OnSeekBarChangeListener) {
+fun SeekBar.onSeekBarChange(l: SeekBar.OnSeekBarChangeListener) {
     setOnSeekBarChangeListener(l)
 }
