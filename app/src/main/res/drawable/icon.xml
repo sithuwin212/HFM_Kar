@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="64dp" android:height="64dp" android:viewportWidth="64" android:viewportHeight="64">
-    <gradient android:startColor="#FF7C3AED" android:endColor="#FFF472B6" android:type="linear" android:angle="135"/>
     <path android:fillColor="#FF7C3AED" android:pathData="M0,0h64v64H0z"/>
-    <path android:fillColor="#FFFFFFFF" android:pathData="M22,18h20v4H22z M22,26h20v4H22z M30,34h12v4H30z"/>
-    <path android:fillColor="#FFFFFFFF" android:pathData="M29,12m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
-    <path android:fillColor="#FFF472B6" android:pathData="M29,12m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M22,20 L42,20 L42,24 L22,24Z"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M22,28 L42,28 L42,32 L22,32Z"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M30,36 L42,36 L42,40 L30,40Z"/>
+    <path android:fillColor="#FFF472B6" android:pathData="M28,12m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0"/>
 </vector>
