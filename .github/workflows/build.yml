@@ -1,0 +1,17 @@
+name: Build HFM-Remote APK
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: remote }
+      - uses: actions/setup-java@v4
+        with: { java-version: '17', distribution: 'temurin' }
+      - uses: android-actions/setup-android@v3
+      - run: chmod +x remote/gradlew && cd remote && ./gradlew assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HFM-Remote-APK
+          path: remote/app/build/outputs/apk/debug/*.apk
