@@ -83,7 +83,7 @@ class SongAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(androidx.leanback.R.layout.lb_row_card_view, parent, false)
+            .inflate(android.R.layout.simple_list_item_2, parent, false)
         return SongViewHolder(view)
     }
 

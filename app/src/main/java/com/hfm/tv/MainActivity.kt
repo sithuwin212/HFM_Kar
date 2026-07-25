@@ -7,7 +7,6 @@ import com.hfm.tv.data.AppDatabase
 import com.hfm.tv.network.HFMWebSocketServer
 import com.hfm.tv.ui.library.LibraryFragment
 import com.hfm.tv.ui.pairing.PairingFragment
-import com.hfm.tv.ui.settings.SettingsFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -45,7 +44,7 @@ class MainActivity : FragmentActivity() {
             try {
                 val cmd = com.google.gson.Gson().fromJson(json, Map::class.java)
                 @Suppress("UNCHECKED_CAST")
-                val type = (cmd as? Map<String, Any>)?.get("type") as? String ?: return@run
+                val type = (cmd as? Map<*, *>)?.get("type") as? String ?: return@run
 
                 when (type) {
                     "search" -> { /* handled via LiveData/Flow */ }

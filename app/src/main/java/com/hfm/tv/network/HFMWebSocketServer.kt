@@ -56,7 +56,7 @@ class HFMWebSocketServer(
     }
 
     // Broadcast to all connected phones
-    fun broadcast(message: String) {
+    fun broadcastMessage(message: String) {
         connections.forEach { it.send(message) }
     }
 

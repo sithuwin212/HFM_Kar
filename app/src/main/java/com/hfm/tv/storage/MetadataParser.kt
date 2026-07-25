@@ -10,10 +10,9 @@ class MetadataParser {
     // Parse from filename: "Artist - Title.mp4" or "Title - Artist.mp4"
     fun parseFromFilename(fileName: String): SongMetadata {
         val name = fileName.substringBeforeLast('.')
-            .replace(Regex("[_]", "_"))
-            .trim()
+               .trim()
 
-        // Pattern: "Artist - Title" (most common)
+           // Pattern: "Artist - Title" (most common)
         val dashPattern = Regex("^(.+?)\\s*[-–—]\\s*(.+)$")
         val match = dashPattern.find(name)
 

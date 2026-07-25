@@ -19,9 +19,9 @@ class PlayerActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(androidx.leanback.R.layout.lb_full_width_details_overview_row)
+        setContentView(android.R.layout.simple_list_item_2)
 
-        val song = intent.getSerializableExtra("song") as? SongEntity ?: return
+        val song = intent.getSerializableExtra("song") as? SongEntity
         val titleView = findViewById<TextView>(android.R.id.title)
         val artistView = findViewById<TextView>(android.R.id.text1)
 

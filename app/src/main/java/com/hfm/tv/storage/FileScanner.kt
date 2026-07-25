@@ -58,13 +58,13 @@ class FileScanner(private val context: Context) {
             if (file.isDirectory) {
                 // Don't recurse too deep - one level only for performance
                 file.listFiles().forEach { child ->
-                    if (child.isFile && child.name != null && isMediaFile(child.name)) {
-                        val song = createSongEntity(child.uri.toString(), child.name!!, "usb")
+                    if (child.name != null && isMediaFile(child.name!!)) {
+                                        val song = createSongEntity(child.uri.toString(), child.name!!, "usb")
                         if (song != null) songs.add(song)
                     }
                 }
-            } else if (file.isFile && file.name != null && isMediaFile(file.name)) {
-                val song = createSongEntity(file.uri.toString(), file.name!!, "usb")
+            } else if (file.isFile && file.name != null && isMediaFile(file.name!!)) {
+                    val song = createSongEntity(file.uri.toString(), file.name!!, "usb")
                 if (song != null) songs.add(song)
             }
         }
