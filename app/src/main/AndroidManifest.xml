@@ -7,8 +7,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <!-- TV + Phone: both can install -->
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
-    <uses-feature android:name="android.software.leanback" android:required="true" />
+    <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.wifi" android:required="false" />
 
     <application
@@ -20,6 +21,7 @@
         android:theme="@style/Theme.HFM"
         android:supportsRtl="true">
 
+        <!-- TV Launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -32,10 +34,28 @@
             </intent-filter>
         </activity>
 
+        <!-- Phone Launcher (separate entry point for phones) -->
+        <activity
+            android:name=".PhoneActivity"
+            android:exported="true"
+            android:icon="@drawable/icon"
+            android:label="HFM"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HFM.Phone">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".ui.player.PlayerActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
 
     </application>
 </manifest>

@@ -8,4 +8,12 @@
         <item name="defaultBrandColor">@color/primary</item>
         <item name="defaultBrandColorDark">@color/primary_dark</item>
     </style>
+
+    <style name="Theme.HFM.Phone" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

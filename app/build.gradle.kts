@@ -41,6 +41,9 @@ dependencies {
     // Gson for JSON command parsing
     implementation("com.google.code.gson:gson:2.11.0")
 
+    // Phone support (AppCompat)
+    implementation("androidx.appcompat:appcompat:1.7.0")
+
     // Core
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.activity:activity-ktx:1.9.1")
