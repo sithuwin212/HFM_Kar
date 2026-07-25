@@ -3,6 +3,8 @@ package com.hfm.tv.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+import java.io.Serializable
+
 @Entity(tableName = "songs")
 data class SongEntity(
     @PrimaryKey val id: String,          // hash of file path
@@ -14,7 +16,7 @@ data class SongEntity(
     val source: String = "local",        // local, usb, youtube
     val addedAt: Long = System.currentTimeMillis(),
     val playCount: Int = 0
-)
+) : Serializable
 
 @Entity(tableName = "queue")
 data class QueueEntity(
