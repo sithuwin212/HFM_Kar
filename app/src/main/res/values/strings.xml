@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HFM</string>
+    <string name="app_description">မိသားစု Karaoke စနစ်</string>
+    <string name="no_songs">သီချင်းမရှိသေးပါ။ Karaoke/ folder ထဲထည့်ပါ</string>
+    <string name="scanning">သီချင်းများရှာဖွေနေသည်…</string>
+    <string name="search_hint">သီချင်းရှာမယ်…</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="queue">တန်းစီရန်</string>
+    <string name="settings">ဆက်တင်</string>
+    <string name="select_folder">Karaoke Folder ရွေးမယ်</string>
+    <string name="usb_status">USB အခြေအနေ</string>
+    <string name="connected_phones">ဖုန်းချိတ်ဆက်မှု</string>
+    <string name="vocal_off">Vocal ဖြုတ်</string>
+    <string name="vocal_on">Vocal ပြန်ထည့်</string>
+    <string name="play">Play</string>
+    <string name="pause">ခဏရပ်</string>
+    <string name="next">ရှေ့သီချင်း</string>
+    <string name="prev">နောက်သီချင်း</string>
+    <string name="qr_pairing">QR နဲ့ချိတ်ဆက်မယ်</string>
+    <string name="scan_qr">ဖုန်းနဲ့ QR Code ကိုဖတ်ပါ</string>
+    <string name="pair_instruction">HFM Remote ဖုန်းအက်ပ်ဖွင့်ပြီး QR ဖတ်ပါ</string>
+    <string name="connected">ချိတ်ဆက်ပြီး</string>
+    <string name="disconnected">ပြတ်တောက်နေ</string>
+</resources>

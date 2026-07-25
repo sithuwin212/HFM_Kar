@@ -1,0 +1,4 @@
+dependencies {
+    // Gson for JSON command parsing
+    implementation("com.google.code.gson:gson:2.11.0")
+}

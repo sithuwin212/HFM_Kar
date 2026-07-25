@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="lb_browse_rows_fading_edge_length">48dp</dimen>
+</resources>
