@@ -1,9 +1,13 @@
 package com.hfm.remote
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.hfm.remote.ui.search.SearchFragment
+import com.hfm.remote.ui.queue.QueueFragment
+import com.hfm.remote.ui.remote.RemoteFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,29 +17,36 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val nav = BottomNavigationView(this).apply {
-            inflateMenu()
-            menu.add(0, 1, 0, "Search").setIcon(android.R.drawable.ic_menu_search)
-            menu.add(0, 2, 0, "Queue").setIcon(android.R.drawable.ic_menu_sort_by_size)
-            menu.add(0, 3, 0, "Remote").setIcon(android.R.drawable.ic_menu_play)
-            setOnItemSelectedListener { item ->
-                when (item.itemId) {
-                    1 -> showFragment(com.hfm.remote.ui.search.SearchFragment())
-                    2 -> showFragment(com.hfm.remote.ui.queue.QueueFragment())
-                    3 -> showFragment(com.hfm.remote.ui.remote.RemoteFragment())
-                }
-                true
-            }
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
         }
-        setContentView(nav)
-        showFragment(com.hfm.remote.ui.search.SearchFragment())
+
+        val tabLayout = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+        }
+        tabLayout.addView(Button(this).apply {
+            text = "🔍 Search"
+            setOnClickListener { showFragment(SearchFragment()) }
+        })
+        tabLayout.addView(Button(this).apply {
+            text = "📋 Queue"
+            setOnClickListener { showFragment(QueueFragment()) }
+        })
+        tabLayout.addView(Button(this).apply {
+            text = "🎮 Remote"
+            setOnClickListener { showFragment(RemoteFragment()) }
+        })
+        layout.addView(tabLayout)
+
+        setContentView(layout)
+        showFragment(SearchFragment())
 
         httpServer.start()
     }
 
     private fun showFragment(f: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(android.R.id.content, f).commit()
+            .replace(android.R.id.content, f).commitNowAllowingStateLoss()
     }
 
     fun connectToTV(ip: String, port: Int = 8550) {

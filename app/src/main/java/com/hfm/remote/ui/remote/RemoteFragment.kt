@@ -9,65 +9,39 @@ import androidx.fragment.app.Fragment
 
 class RemoteFragment : Fragment() {
 
-    private lateinit var statusLabel: TextView
-
     override fun onCreateView(inflater: LayoutInflater, group: ViewGroup?, saved: Bundle?): View {
         val layout = LinearLayout(requireContext()).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(30, 30, 30, 30)
         }
 
-        statusLabel = TextView(requireContext()).apply {
-            text = "🎵 HFM Remote"
-            setTextSize(24f)
-        }
-        layout.addView(statusLabel)
+        layout.addView(TextView(requireContext()).apply { text = "🎵 HFM Remote"; setTextSize(24f) })
 
-        layout.addView(createButton("▶ Play / Pause", "toggle_play"))
-        layout.addView(createButton("⏭ Next", "next"))
-        layout.addView(createButton("⏮ Previous", "prev"))
-        layout.addView(createButton("🎤 Vocal Off", "vocal_off").apply {
-            isAllCaps = false
-        })
-        layout.addView(createButton("🎤 Vocal On", "vocal_on").apply {
-            isAllCaps = false
-        })
+        layout.addView(Button(requireContext()).apply { text = "▶ Play/Pause"; setOnClickListener { sendCmd("toggle_play") } })
+        layout.addView(Button(requireContext()).apply { text = "⏭ Next"; setOnClickListener { sendCmd("next") } })
+        layout.addView(Button(requireContext()).apply { text = "⏮ Previous"; setOnClickListener { sendCmd("prev") } })
+        layout.addView(Button(requireContext()).apply { text = "🎤 Vocal Off"; setOnClickListener { sendCmd("vocal_off") } })
+        layout.addView(Button(requireContext()).apply { text = "🎤 Vocal On"; setOnClickListener { sendCmd("vocal_on") } })
+        layout.addView(Button(requireContext()).apply { text = "📡 Reconnect"; setOnClickListener { sendCmd("reconnect") } })
 
-        // Volume control
         val volLayout = LinearLayout(requireContext()).apply { orientation = LinearLayout.HORIZONTAL }
-        volLayout.addView(TextView(requireContext()).apply { text = "🔊 Volume" })
+        volLayout.addView(TextView(requireContext()).apply { text = "🔊" })
         val seekBar = SeekBar(requireContext())
         seekBar.max = 100; seekBar.progress = 70
-        seekBar.setOnSeekBarChangeChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(sb: SeekBar?, v: Int, fromUser: Boolean) {
-                if (fromUser) {
-                    val act = requireActivity() as? com.hfm.remote.MainActivity
-                    act?.sendCommand("volume", mapOf("level" to v))
-                }
-            }
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(sb: SeekBar?, v: Int, fromUser: Boolean) {}
             override fun onStartTrackingTouch(sb: SeekBar?) {}
-            override fun onStopTrackingTouch(sb: SeekBar?) {}
+            override fun onStopTrackingTouch(sb: SeekBar?) {
+                sb?.let { sendCmd("volume", mapOf("level" to it.progress)) }
+            }
         })
         volLayout.addView(seekBar)
         layout.addView(volLayout)
 
-        layout.addView(createButton("📡 Reconnect", "reconnect"))
-
         return layout
     }
 
-    private fun createButton(text: String, command: String): Button {
-        return Button(requireContext()).apply {
-            this.text = text
-            setOnClickListener {
-                val act = requireActivity() as? com.hfm.remote.MainActivity
-                act?.sendCommand(command)
-            }
-        }
+    private fun sendCmd(type: String, data: Map<String, Any> = emptyMap()) {
+        (requireActivity() as? com.hfm.remote.MainActivity)?.sendCommand(type, data)
     }
-}
-
-// Fix for SeekBar listener naming
-fun SeekBar.onSeekBarChange(l: SeekBar.OnSeekBarChangeListener) {
-    setOnSeekBarChangeListener(l)
 }
