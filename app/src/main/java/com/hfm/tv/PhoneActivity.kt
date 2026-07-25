@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.ComponentActivity
@@ -86,9 +87,7 @@ class PhoneActivity : ComponentActivity() {
                 override fun afterTextChanged(s: Editable?) { filterSongs(s?.toString() ?: "") }
             })
         }
-        layout.addView(searchInput, ViewGroup.LayoutParams(-1, -2).apply {
-            // full width
-        })
+        layout.addView(searchInput, LinearLayout.LayoutParams(-1, -2))
 
         // ── Tabs ──
         val tabRow = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; setPadding(0, 16, 0, 8) }
@@ -110,7 +109,6 @@ class PhoneActivity : ComponentActivity() {
         // ── Content Area ──
         contentArea = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            layoutParams = ViewGroup.LayoutParams(-1, 0).apply { weight = 1f }
         }
         songGrid = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -200,7 +198,7 @@ class PhoneActivity : ComponentActivity() {
             text = song.artist
             setTextSize(14f); setTextColor(0xFF8B7EA0.toInt())
         })
-        card.addView(info, ViewGroup.LayoutParams(0, -2).apply { weight = 1f })
+        card.addView(info, LinearLayout.LayoutParams(0, -2).apply { weight = 1f })
 
         // Duration
         card.addView(TextView(this).apply {
