@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.documentfile.provider.DocumentFile
 import com.hfm.tv.storage.FileScanner
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class SettingsActivity : ComponentActivity() {
 
@@ -56,7 +58,7 @@ class SettingsActivity : ComponentActivity() {
             val scanner = FileScanner(this)
             val result = scanner.scanSafFolder(treeUri)
             val db = (application as com.hfm.tv.HFMApplication).database
-            Thread { db.songDao().insertSongs(result.songs) }.start()
+            GlobalScope.launch { db.songDao().insertSongs(result.songs) }
 
             statusLabel.text = "${result.songs.size} songs found"
         }

@@ -24,7 +24,11 @@ class PlayerActivity : ComponentActivity() {
         val song = intent.getSerializableExtra("song") as? SongEntity
         val titleView = findViewById<TextView>(android.R.id.title)
         val artistView = findViewById<TextView>(android.R.id.text1)
-
+        if (song == null) {
+            titleView.text = "No song selected"
+            artistView.text = ""
+            return
+        }
         titleView.text = song.title
         artistView.text = song.artist
 
